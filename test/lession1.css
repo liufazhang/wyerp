@@ -1,0 +1,22 @@
+body,div{
+    padding: 0;
+    margin:0;
+}
+.div1{
+    width: 200px;
+    height: 200px;
+    background: #900;
+    float:right;
+}
+.div2{
+    width: 200px;
+    height: 200px;
+    background: blue;
+    float: right;
+}
+.div3{
+    width: 1600px;
+    height: 200px;
+    background: #808080;
+    clear: both;
+}

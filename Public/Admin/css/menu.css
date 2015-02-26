@@ -1,0 +1,32 @@
+.menuSelectionInput{
+	
+}
+.menuSelectionDiv{
+	border:1px solid;
+	width:250px;
+}
+
+.menuSelectionDiv ul li{
+	list-style:none;
+	text-indent: 1px;
+	padding-top:2px;
+	padding-left:2px;
+	margin-left:0px;
+}
+
+.menuSelectInput{
+	width:100%;
+	border:0;
+}
+
+.menuEdit input{
+	border-radius:4px;
+	border:1px solid #cccccc
+}
+.menuSelectInput{
+	width:100%;
+	border:0;
+}
+.idhide,.menuid{
+	display:none;
+}

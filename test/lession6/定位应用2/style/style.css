@@ -1,0 +1,7 @@
+/* W3Cfuns.com CSS Document */
+body,div{margin:0; padding:0;}
+#banner{width:1000px; height:292px; background:url(../images/banner.jpg) no-repeat; position:relative; margin:0 auto;}
+a{display:block; width:107px; height:107px; background:url(../images/applyNormal.png) no-repeat; position:absolute; top:0; right:0;}
+a:hover{background:url(../images/applyHover.png) no-repeat;}
+
+

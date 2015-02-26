@@ -1,0 +1,148 @@
+<div class="oe_view_title">
+    <div class="oe_title_div">
+    <a class="oe_title" href="#">公司</a>
+    <span class="oe_slash">/</span>
+    <span class="oe_fade">新建</span>
+    </div>
+    <div class="oeAdd">
+        <button type="button" class="btn btn-primary oeCreate">创建</button>
+        <button type="button" class="btn btn-primary btOeEdit">编辑</button>
+    </div>
+    <div class="moreOperation">
+        <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle"
+                    data-toggle="dropdown">
+                更多 <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a class="oeListDelete">删除</a></li>
+                <li><a href="#">导出</a></li>
+            </ul>
+        </div>
+
+        <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle"
+                    data-toggle="dropdown">
+                打印 <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="#">预览报表</a></li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>
+<div class="oe_list_view">
+    <table class="table table-condensed">
+        <thead>
+        <tr>
+        <th><input class="moreSelect" type="checkbox"></th>
+        <th>公司名称</th>
+        <th>业务伙伴</th>
+        </tr>
+        </thead>
+        <tobdy >
+            <Volist name="oeList" id="vo">
+                <tr class="oe">
+                    <td><input class="oeList" type="checkbox"><span class="selectId" style="display:none">{$vo.id}</span></td>
+                    <td class="selectOe"><span class="selectName">{$vo.name}</span> <span class="selectId" style="display:none">{$vo.id}</span></td>
+                    <td class="selectOe"><span class="selectName">{$vo.name}</span> <span class="selectId" style="display:none">{$vo.id}</span></td>
+                </tr>
+            </Volist>
+            <tr>
+            <td><input class="moreSelect" type="checkbox"></td>
+            <td>Your company</td>
+            <td>Your company</td>
+            </tr>
+        </tobdy>
+
+    </table>
+
+</div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		var companyCreateUrl= '{:U('Admin/Company/companyCreate')}';
+		$(".oeCreate").click(function(){
+			$(".oe_fade").show();
+            $(".oe_slash").show();
+			$(".oeCreate").hide();
+			$(".oe_list_view").load(companyCreateUrl,{"oeState":"create"});//新建，区别编辑
+            $(".moreOperation").hide();
+		});
+
+        $(".selectOe").click(function(){
+            var companySaved= '{:U('Admin/Company/companySaved')}';
+            var oeId = $(this).children(".selectId").text() ;
+            //alert($(this).value());
+            var name = $(this).children(".selectName").text();
+           $(".oe_fade").text(name);
+            $(".oe_fade").show();
+            $(".oe_slash").show();
+            $(".oeCreate").hide();
+            $(".oe_list_view").load(companySaved,{"oeId":oeId});//进入保存的状态界面
+            $(".moreOperation").hide();
+            $(".btOeEdit").show();
+        });
+/*
+点编辑按钮
+*/
+        $(".btOeEdit").click(function(){
+            var companyCreateUrl= '{:U('Admin/Company/companyCreate')}';
+            $(".oe_fade").show();
+            $(".oe_slash").show();
+            $(".oeCreate").hide();
+            $(".oe_list_view").load(companyCreateUrl,{"oeState":"edit"});//编辑
+            $(".moreOperation").hide();
+        });
+
+		$(".oe_title").click(function(){
+			var Url= '{:U('Admin/Company/index')}';
+			$(".content").load(Url);
+		});
+        $(".moreSelect,.oeList").click(function(){
+            //alert($("input:checkbox:checked").val());
+
+         if($("input:checkbox:checked").val() =='on'){
+              // alert("checked");
+             $(".moreOperation").show();
+           }else{
+             $(".moreOperation").hide();
+           }
+        });
+
+        /*
+        右侧公司删除功能，遍历选中的公司，删除数据库，并更新界面
+         */
+        $(".oeListDelete").click(function(){
+           var  $url =  "{:U('Admin/Company/companyDelete')}";
+           // alert($(".tobdy").html());
+            var arr =new Array();
+            $(".moreSelect,.oeList").each(function(){
+                if($(this).is(":checked")){
+                    //alert($(this).next().text());
+                    arr.push($(this).next().text());
+                }
+            });
+
+
+            $.ajax({
+               type:"POST",
+                dataType:"json",
+                data:{"data":arr},
+                url:$url,
+                async:false,
+                success:function(data){
+                  if(data>0){
+                      $(".oeList").each(function(){
+                          if($(this).is(":checked")){
+                              $(this).parent().parent().hide();
+                          }
+                      });
+                  }
+                 }
+
+            });
+        });
+	});
+</script>

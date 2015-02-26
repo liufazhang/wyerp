@@ -1,0 +1,10 @@
+body  div p h1{
+    margin:0;
+    padding: 0;
+}
+
+p.tow{
+    float:left;
+    width: 200px;
+}
+

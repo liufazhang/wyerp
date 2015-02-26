@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="../jquery-1.11.1.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+        }
+        .main{
+            width: 500px ;
+            margin:0 auto;
+            background: #FFFFFF;
+            border:1px solid #843534;
+        }
+        .drop{
+            position:absolute;
+            border:1px solid #00b3ee;
+            width:50px;
+        }
+        ul > li{
+        list-style: none;
+        }
+        span{
+            height: 20px;
+            vertical-align:middle;
+        }
+        .inputText{
+            height: 20px;
+            vertical-align:middle;
+            border: none;
+
+
+        }
+        img{
+            height: 20px;
+            vertical-align: middle;
+        }
+        .divarrow{
+            border: 1px solid #000000;
+            border-radius:3px;
+        }
+     </style>
+    <script>
+        $(document).ready(function(){
+            //alert( $(".inputText").height());
+            $(".drop").width($(".inputText").width()+$(".arrow").width());
+
+        })
+
+    </script>
+</head>
+<body>
+<div class="main">
+    <div>xxxxxxxxxxx</div>
+    <div class="dropDiv">
+        <div class="divarrow">
+        <input class="inputText" ><span class="arrow"><img src="down-arrow.png"></span>
+        </div>
+        <div class="drop">
+            <ul>
+                <li>
+                    <span class="icon icon-triangle-down testsize"></span>
+                </li>
+                <li>2</li>
+                <li>3</li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>

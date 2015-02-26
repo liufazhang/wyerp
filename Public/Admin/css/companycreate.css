@@ -1,0 +1,92 @@
+.companyinput input{
+	border-radius:4px;
+	border:1px solid #cccccc;
+}
+.oe_fade , .oeSave,.oe_slash{
+	display:none;	
+}
+.oe_info{
+    border:1px solid #eaeaea;
+    margin-left:50px;
+    margin-right:50px;
+    margin-top:60px;
+
+	
+}
+.oe_view_title{
+    background: #eaeaea;
+    height: 90px;
+}
+
+
+.road,.oe_slogan,.oe_website{
+
+    width:350px;
+}
+
+.province,.city,.country{
+    width:80px;
+}
+.postcode{
+    border-radius:4px;
+    border:1px solid #cccccc;
+
+}
+.input_shape{
+    border-radius:4px;
+    border:1px solid #cccccc;
+    height: 25px;
+}
+
+.oe_bank_p2{
+    display: none;
+    position:absolute;
+    background-color:white;
+    border: 1px solid #cccccc;
+    border-radius:5px;
+    z-index:1001;
+}
+.oe_bank_p2_title,.oe_bank_p3_title{
+    font-size: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background: #eaeaea;
+}
+.bank_count_input{
+    width:300px;
+}
+.oe_bank_p3{
+    display: none;
+    position:absolute;
+    background-color:white;
+    border: 1px solid #cccccc;
+    border-radius:5px;
+    z-index:1002;
+}
+.div_dropdown{
+
+}
+.ul_dropdown{
+    display:none;
+    list-style: none;
+    position:absolute;
+    border:1px solid #cccccc;
+
+}
+.div_dropdown input{
+
+}
+.oeAdd {
+    float:left;
+    margin-top: 30px;
+}
+.moreOperation{
+    float:right;
+    margin-right: 500px;
+    margin-top: 30px;
+    display: none;
+}
+.oe_title_div{
+    display:block;
+}
+

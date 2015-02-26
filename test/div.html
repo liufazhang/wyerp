@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="div.css">
+    <link rel="stylesheet" href="../Public/statics/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href=" ../Public/statics/dropkick/dropkick.css">
+    <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
+    <script src="../Public/statics/dropkick/jquery.dropkick-min.js"></script>
+    <script>
+        $.fn.ready(function() {
+            $('.default').dropkick();
+
+            $('.black').dropkick({
+                theme : 'black'
+            });
+
+
+
+
+        });
+    </script>
+</head>
+<body>
+    <div id="divmax">
+        <div id="divheader">
+            页面头部
+        </div>
+
+        <div id="divcontent">
+            <div id="divleft">
+                左边内容
+            </div>
+            <div id="divright">
+
+                 <span class="dk_wrap">
+                         <select name="country-nofake" class="default" style="visibility: hidden">
+                             <option value="">Try Me!</option>
+                             <option value="AU">Australia</option>
+                             <option value="CA">Canada</option>
+                             <option value="DE">Germany</option>
+                             <option value="JP">Japan</option>
+                             <option value="GB">United Kingdom</option>
+                             <option value="US">United States</option>
+                         </select>
+                        </span>
+
+
+            </div>
+        </div>
+        <div id="divfoot">
+            页脚
+        </div>
+    </div>
+
+</body>
+</html>
+
+

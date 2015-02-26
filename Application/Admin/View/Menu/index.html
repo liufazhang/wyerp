@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="__STATICS__/bootstrap3/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="__STATICS__/bootstrap3/css/bootstrap-theme.min.css" />
+    <link rel="stylesheet" href="__STATICS__/css/default.css" />
+    <link rel="stylesheet" href="__STATICS__/css/menu.css">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="__STATICS__/bootstrap3/js/jquery.min.js"></script>
+    <script src="__STATICS__/bootstrap3/js/bootstrap.min.js"></script>  
+    <script type="text/javascript" src="__STATICS__/js/jquery-2.1.1.js"></script>
+    <script src="__STATICS__/js/menu.js"></script>
+    <script type="text/javascript">	
+   
+  </script>
+  
+</head>
+<body>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="#">公司名字</a>
+    </div>
+    <div class="navbar-right">
+        <ul class="nav navbar-nav">
+            <li class="dropdown">
+                <a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#"><i class="glyphicon glyphicon-user"></i> {$Think.session.username} <i class="caret"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="#" tabindex="-1"><i class="glyphicon glyphicon-cog"></i>	设置</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="{:U('Admin/Login/logout')}" tabindex="-1"><i class="glyphicon glyphicon-off"></i>	退出</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="menu">
+    {$menu}
+     <span class="menumanager"><a href="#">菜单管理</a></span>
+</div>    
+<div class="container"> 
+    <div class="path">
+    	<span>path</span>
+    </div>
+    <div class="content">
+   	 <span>content</span>
+    </div>	
+  
+</div>
+    <!--  
+    <ul>     
+        <li><a href="{:U('Admin/Menu/menuList')}">{:L('menuManager')}</a></li>
+    </ul>
+    
+    -->
+</body>
+</html>

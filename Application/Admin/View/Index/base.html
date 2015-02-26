@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="__STATICS__/bootstrap-3.3.1/custom-bootstrap/bootstrap.min.css" />
+  <!-- <link rel="stylesheet" href="__STATICS__/bootstrap3/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="__STATICS__/fontawesome/css/font-awesome.min.css">-->
+    <link rel="stylesheet" href="__STATICS__/css/default.css" />
+    <link rel="stylesheet" href="__CSS__/main.css">
+    <link rel="stylesheet" href="__CSS__/menu.css">
+    <link rel="stylesheet" href="__CSS__/companycreate.css">
+    <link rel="stylesheet" href="__CSS__/companyindex.css" >
+    <link rel="stylesheet" href="__STATICS__/css/popup.css">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+
+   <script src="__STATICS__/bootstrap/js/jquery.min.js"></script>
+    <!--<script type="text/javascript" src="__STATICS__/js/jquery-1.11.1.js"></script>-->
+    <script src="__STATICS__/bootstrap/js/bootstrap.min.js"></script>
+   <!-- <script type="text/javascript" src="__STATICS__/js/jquery-2.1.1.js"></script> -->
+    <!--<link rel="stylesheet" href=" __STATICS__/dropkick/dropkick.css"> -->
+
+    <!--<script src="__STATICS__/dropkick/jquery.dropkick.js"></script> -->
+    <script src="__JS__/menu.js"></script>
+    <script src="__STATICS__/js/popup.js"></script>
+    <block name="script"></block>
+
+  
+</head>
+<body>
+<nav class="navbar" role="navigation" id="wy_nav" >
+    <!--<ul class="nav navbar-nav">
+        <li class="active"><a href="#">主数据</a></li>
+        <li><a href="#about">菜单管理</a></li>
+      </ul>
+      -->
+   <Volist name="menuTop" id="vo">
+       <ul class="nav navbar-nav menuTop">
+           <li ><a href="#">{$vo.title}</a><input  style="display:none" name="menuId" value="{$vo.id}"></li>
+       </ul>
+   </volist>
+    <div class="navbar-right">
+        <ul class="nav navbar-nav"  >
+            <li class="dropdown dropdown-height">
+                <a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#"><i class="glyphicon glyphicon-user"></i> {$Think.session.username} <i class="caret"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a href="#" tabindex="-1"><i class="glyphicon glyphicon-cog"></i>	设置</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="{:U('Admin/Login/logout')}" tabindex="-1"><i class="glyphicon glyphicon-off"></i>	退出</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+</nav>
+<!-- href="{:U('Admin/Menu/menuList')}" -->
+
+<div class="menu">
+    <div id="logo">
+        <img src="__IMG__/logo.png">
+    </div>
+    {$menu}
+    <!-- <span class="menumanager"><a class="menuManager" >菜单管理</a></span>-->
+</div>  
+<block name="container"></block>			
+
+
+    <!--  
+    <ul>     
+        <li><a href="{:U('Admin/Menu/menuList')}">{:L('menuManager')}</a></li>
+    </ul>
+    
+    -->
+</body>
+</html>

@@ -1,0 +1,409 @@
+<div class="oe_info">
+    <form class="oe_info_form">
+        <div>
+            <table class="">
+                <tbody>
+                <tr>
+                    <td style="width:150px;">公司名称</td>
+                    <td colspan="3"><input class="oe_slogan input_shape" name="name" type="text" value={$data['name']}>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style="width:150px;">上级公司</td>
+                    <td colspan="3"><input class="oe_slogan input_shape" name="pname" value={$data['pname']}>
+
+                    </td>
+                </tr>
+                </tbody>
+                </table>
+        </div>
+     <table >
+         <tbody>
+            <tr>
+                <td>
+                    <table class="">
+                        <tbody>
+                        <tr>
+                            <td style="width:150px;">
+                                <span >地址</span>
+                            </td>
+                            <td>
+                                <table>
+                                    <tr>
+                                        <td  colspan="3">
+                                            <input class="road input_shape" type="text" placeholder="街道.." name="address" value={$data['address']}>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <input class="city input_shape" type="text" placeholder="城市.." name="city" value={$data['city']}>
+                                            <input class="province input_shape" type="text" placeholder="省.." name="province" value={$data['province']}>
+                                            <input class="country input_shape" type="text" placeholder="国家.." name="country" value={$data['country']}>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td><input class="postcode input_shape" type="text" placeholder="邮编.." name="postcode" value={$data['postcode']}>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td >公司标语</td>
+                            <td colspan="3"><input class="oe_slogan input_shape" name="oeslogan" value={$data['oeslogan']}></td>
+                        </tr>
+                        <tr>
+                            <td >网站</td>
+                            <td colspan="3"><input class="oe_website input_shape" name="website" value={$data['website']}></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td>
+                    <table >
+                        <tbody>
+                        <tr>
+                            <td  style="width:250px;text-align: center">法人</td>
+                            <td><input  class="legal-person input_shape" name="legalperson " value={$data['legalperson']}></td>
+                        </tr>
+                        <tr>
+                            <td  style="width:250px;text-align: center">税号</td>
+                            <td><input  class="tax input_shape" name="tax" name="tax" value={$data['tax']}></td>
+                        </tr>
+                        <tr>
+                            <td  style="width:250px;text-align: center">公司登记</td>
+                            <td><input  class="registration input_shape" name="registration" value={$data['registration']}></td>
+                        </tr>
+                        <tr>
+                            <td  style="text-align: center">联系人</td>
+                            <td><input  class="contacts input_shape" name="contacts" value={$data['contacts']}></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center">电话</td>
+                            <td><input  class="phone input_shape" name="phone" value={$data['phone']}></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center" >QQ</td>
+                            <td><input  class="qq input_shape" name="qq" value={$data['qq']}></td>
+                        </tr>
+                        <tr >
+                            <td style="text-align: center">Email</td>
+                            <td><input  class="email input_shape" name="email" value={$data['email']}></td>
+                        </tr>
+
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td>银行账户</td>
+            </tr>
+         <tr>
+             <table class="table">
+
+                    <thead>
+                        <tr>
+                        <th>银行账号</th>
+                        <th>银行名称</th>
+                        <th>账号所有者</th>
+                        </tr>
+                    </thead>
+                 <tbody >
+                 <tr class="bank_count_default" style="display: none">
+                     <td>a</td>
+                     <td>b</td>
+                     <td>c</td>
+                 </tr>
+                 <tr >
+                     <td ><a class="oe_bank_p1_add " href="#">添加一个账户</a></td>
+                     <td></td>
+                     <td></td>
+
+                 </tr>
+
+                 </tbody>
+             </table>
+         </tr>
+        <!-- <tr>
+             <td>
+                 <div>
+                     <button type="button" class="btn btn-primary  oe_info_save">保　存</button>
+                     <span> 或</span>
+                     <a>放弃</a>
+                 </div>
+             </td>
+         </tr>-->
+         </tbody>
+     </table>
+    </form>
+    <div>
+        <button type="button" class="btn btn-primary  oe_info_save">保　存</button>
+        <span> 或</span>
+        <a>放弃</a>
+    </div>
+</div>
+
+<!-- 添加账户浮动DIV-->
+<div  class=" oe_bank_p2">
+<div >
+    <div class=" oe_bank_p2_title">
+        <span>创建：银行账户</span>
+    </div>
+    <form class="bank_count_info">
+   <table >
+      <tbody>
+        <tr>
+            <td>银行账户类型</td>
+            <td>
+                <select>
+                    <option>普通账户</option>
+                    <option>信用卡</option>
+                </select>
+            </td>
+            <td>银行账号</td>
+            <td><input class="input_shape bank_count_input" name="count"></td>
+        </tr>
+      <tr>
+          <td>
+              <table>
+                  <tr>
+                      <th>银行账户所有者</th>
+                  </tr>
+                  <tr>
+                      <td>所有者姓名</td>
+                      <td><input class="input_shape " name="name"></td>
+                  </tr>
+
+                  <tr>
+                      <th>银行信息</th>
+                  </tr>
+                  <tr>
+                      <td>银行名称</td>
+                      <td>
+                          <div class="div_dropdown">
+                              <input  type="text" class=" input_shape bank_name oe_bank_p2_pop" name="bank">
+                              <span class="oe_bank_p2_pop"><i class=" fa fa-caret-down"></i></span>
+                              <ul class="ul_dropdown bank_list">
+                                  <!--<li class="oe_bank_p2_create"><i>创建并编辑</i></li>-->
+                                  <li class="oe_bank_p2_create"></li>
+                              </ul>
+                          </div>
+
+                      </td>
+
+                  </tr>
+                  <tr>
+                      <td>银行代码</td>
+                      <td><input class="input_shape bank_code" name="bankcode"></td>
+                  </tr>
+              </table>
+          </td>
+      </tr>
+      <tr>
+          <td>
+              <div>
+                  <button class="btn btn-primary oe_bank_p2_save">保存并关闭</button>
+                  <span>或</span>
+                  <a href="#" class="oe_bank_p2_quit">放弃</a>
+              </div>
+          </td>
+      </tr>
+      </tbody>
+   </table>
+    </form>
+</div>
+</div>
+<!--添加账户浮动DIV 结束-->
+
+<div class=" oe_bank_p3">
+    <div>
+        <div class="bank_edit_title oe_bank_p3_title">
+            <span>创建：银行</span>
+        </div>
+        <form class="bank_form" >
+            <table>
+                <tr>
+                    <td>名称</td>
+                    <td><input   type="text" name="name"></td>
+                    <td >银行代号</td>
+                    <td><input type="text" name="code"></td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>
+                            <button  type="button" class="btn btn-primary oe_bank_p3_save">保存并关闭</button>
+                            <span>或</span>
+                            <a href="#" class=" oe_bank_p3_quit">放弃</a>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+<script>
+	$(".oe_info_save").click(function(){
+		//alert("companysave");
+		var addCompanyUrl ='{:U('Admin/Company/companyAdd')}';
+		$.ajax({
+			type:"POST",
+			url:addCompanyUrl,
+			data:$(".oe_info_form").serialize(),
+			dataType:"json",
+			success:function(data){
+				alert(data['oeId']);
+                if(data['oeId']!=-1){
+                    var oeId = data['oeId'];
+                    var companySaved= '{:U('Admin/Company/companySaved')}';
+                    //alert($(this).value());
+                    $(".oe_fade").show();
+                    $(".oe_slash").show();
+                    $(".oeCreate").hide();
+                    $(".oe_list_view").load(companySaved,{"oeId":oeId});//进入保存的状态界面
+                    $(".moreOperation").hide();
+                    $(".btOeEdit").show();
+                }
+
+			}
+		});
+
+
+
+
+	});
+
+    $(".oe_bank_p1_add").click(function(){
+        /**/
+        var url = '{:U('Admin/Bank/bankList')}';
+        $.getJSON(url,function(data){
+            $.each(data,function(index,val){
+                //$(".oe_bank_p2_create").before("<li>"+val.name+"<input style='display: none' value="+val.code+ ">"+ "</li>");
+                $(".oe_bank_p2_create").before("<li class='bname'>"+"<a>"+val.name+"</a>" + "<input style='display: none' value="+val.code+ ">"+ "</li>" );
+            });
+        });
+        popup();//弹出遮盖层
+        var bankWidth = $(".oe_bank_p2").width();
+        var bankHeight = $(".oe_bank_p2").height();
+        $(".oe_bank_p2").height(bankHeight+100);
+        var sWidth = $(document).width();
+        var sHeight = $(document).height();
+        var top = sHeight/2 - bankHeight/2;
+        var left = sWidth/2 - bankWidth/2;
+        $(".oe_bank_p2").css({"top":50,"left":left});
+        $(".oe_bank_p2").show();
+    });
+
+
+
+
+    $(document).ready().on('click', '.oe_bank_p1_list', function (event) {
+        var url = '{:U('Admin/BankCount/bankCountList')}';
+        $.ajax({
+            type:'POST',
+            url:url,
+            dataType:'json',
+            data:$(this).val(),
+            success:function(data){
+
+            }
+
+        });
+    });
+$(".oe_bank_p2_save").click(function(event){
+    var url='{:U('Admin/BankCount/addBankCount')}';
+    $.ajax({
+        type:"POST",
+        url:url,
+        dataType:"json",
+        data:$(".bank_count_info").serialize(),
+        success:function(data){
+            if(data != ""){
+                $(".oe_bank_p2").hide();
+                $.each(data,function(index,val){
+                    $(".bank_count_default").after("<tr><td><a class='oe_bank_p1_list'>"+val.count+"</a></td><td>"+val.name
+                            +"</td><td>"+val.bank+"</td></tr>")
+                });
+
+            }else{
+            }
+            }
+    });
+    popupDelete();
+   event.preventDefault();
+});
+
+    $(document).ready().on('click', '.bname', function (event) {
+        $(".bank_name").val($(this).children("a").html());
+       $(".bank_code").val($(this).children("input").val());
+        if($(".ul_dropdown").is(":hidden")){
+            $(".ul_dropdown").show();
+        }else{
+            $(".ul_dropdown").hide();
+        }
+        return false;
+    });
+
+    $(".oe_bank_p2_quit").click(function(){
+        $(".oe_bank_p2").hide();
+
+        popupDelete();
+    });
+
+    $(".oe_bank_p2_create").click(function(){
+
+        var bankWidth = $(".oe_bank_p2").width()+10;
+        var bankHeight = $(".oe_bank_p2").height()+10;
+        $(".oe_bank_p3").height(bankHeight+100);
+        var sWidth = $(document).width();
+        var sHeight = $(document).height();
+        var top = sHeight/2 - bankHeight/2;
+        var left = sWidth/2 - bankWidth/2;
+        $(".oe_bank_p3").css({"top":50,"left":left,"width":bankWidth,"height":bankHeight});
+        $(".oe_bank_p3").show();
+
+    });
+
+    $(".oe_bank_p3_save").click(function(){
+        var url='{:U('Admin/Bank/BankCreate')}';
+        $.ajax({
+            type:"POST",
+            dataType:"json",
+            url:url,
+            data:$(".bank_form").serialize(),
+            async:false,
+            success:function(data){
+                $(".oe_bank_p3").hide();
+                $(".bank_name").val(data['name']);
+                $(".bank_code").val(data['code']);
+                $(".ul_dropdown").hide();
+
+            }
+
+        });
+    });
+
+    $(".oe_bank_p3_quit").click(function(){
+        $(".oe_bank_p3").hide();
+    });
+
+    $(".oe_bank_p2_pop").click(function(){
+       // $(".div_dropdown").css("border","none");
+        if($(".ul_dropdown").is(":hidden")){
+            //$(".ul_dropdown").css("zindex","1006");
+            var dropdownWidth = $(this).width();
+            $(".ul_dropdown").css("width",dropdownWidth);
+            $(".ul_dropdown").show();
+        }else{
+            $(".ul_dropdown").hide();
+        }
+
+    });
+
+    $(document).ready(function(){
+        //var state = {$oeState};
+        //alert(state);
+    });
+
+</script>

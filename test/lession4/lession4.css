@@ -1,0 +1,136 @@
+body,div,ul,li,p,dl,dt,dd,h1,a{
+    padding: 0;
+    margin:0;
+}
+h1{font-size:100%;}
+img{border:none;}
+html{background: url(./img/bg.gif) repeat-x;}
+body{background: url(./img/clouds.gif) repeat-x;}
+img{border:none;}
+body{
+    padding-top:45px;
+}
+#header,#banner,#content,#footer{
+    margin:0 auto;
+    width: 1000px;
+}
+#header{
+    margin-top:5px;
+    background: #e38d13;
+    overflow: hidden;
+}
+#logo{
+    width:220px;
+    height: 54px;
+    float: left;
+    display: block;
+}
+
+#logo image{
+    display: block;
+}
+#nav {
+    height: 54px;
+    background: #333333;
+    list-style: none;
+    float:left;
+}
+
+#nav li{
+    line-height: 54px;
+    float:left;
+
+}
+
+#nav li a{
+    color:#f5f5f5;
+
+    text-decoration: none;
+    display:block;
+    height: 54px;
+    width:86px;
+    text-align: center;
+    float: left;
+}
+
+.navactive{
+   background:  url(./img/navHoverBg.png) no-repeat;
+   color:#fff;
+}
+#banner{
+    display: block;
+    margin:10px auto;
+    width:1000px;
+    height: 292px;
+    background: #ac2925;
+}
+#banner img{
+    display: block;
+    width:1000px;
+    height: 292px;
+}
+#content{
+    margin:0 auto;
+    overflow: hidden;
+    line-height: 24px;
+}
+
+#leftarticle,#rightinfo{
+    margin:10px;
+    float: left;
+}
+#leftarticle h1 a{
+    color: #ac2925;
+    text-decoration:none;
+}
+#leftarticle h1 a:hover{
+    text-decoration:underline;
+}
+#leftarticle p{
+    text-indent: 2em;
+    margin-top:30px;
+}
+#leftarticle{
+    width: 660px;
+}
+#articlePicA,#articlePicA img{
+    display: block;
+}
+#leftarticle h1{
+    margin:20px 0;
+    font-size:24px;
+    font-family: "微软雅黑","黑体";
+}
+#rightinfo{
+    width: 300px;
+}
+#rightinfo dl{
+    margin-bottom: 10px;
+}
+#rightinfo dl dt{
+    background:url(./img/title.jpg) no-repeat;
+    height:32px;
+    line-height:32px;
+    color:#FFF;
+    font-size:14px;
+    font-weight:bold;
+    text-indent:20px;
+}
+#rightinfo dl dd{
+    height:24px;
+    line-height:24px;
+    background:url(./img/dot.gif) no-repeat 7px 10px;
+    text-indent:16px;
+    display: block;
+    font-size: 12px;
+}
+##footer{
+    background:#393838;
+    height:52px;
+    line-height:18px;
+    margin-top:10px;
+    padding-top:18px;
+    text-align:center;
+    color:#ccc;
+    font-size:12px;
+}

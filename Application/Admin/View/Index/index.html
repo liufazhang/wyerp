@@ -1,0 +1,82 @@
+<extend name="Index:base" />
+<block name="container">
+ <div class="container"> 
+  <!--   <div class="path">
+    	<span>path</span>
+    </div>
+   -->
+    <div class="content">
+   	 <span>content</span>
+    </div>	
+  
+</div>   
+</block>
+
+<block name="script">
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".menuManager").click(function(){
+		var menuManagerUrl = "{:U('Admin/Menu/menuList')}";
+		$(".content").load(menuManagerUrl);
+		//$(".path span").html($(".menuManager").html());
+		 
+		});
+});
+
+$(document).ready(function(){			 	
+ 	$(".menu").children("ul").find("a").each(function(){
+ 		var url= $(this).next().text();/*取得span 中的链接*/
+		//$(this).attr("href","#"));
+		$(this).click(function(){
+			$(".content").load(url);
+			//alert(url);
+			
+				//$(".menuSelectInput").val($(this).html());
+			//$(".menuSelectionDiv").children("ul").hide();
+		});								
+		
+	});
+ 	
+ 	
+});
+
+//$(document).ready().on('click', '.bname', function (event) {
+/*$(document).ready().on('click', '.liabc', function (event) {
+
+ alert($(this).children("span").html());
+
+ });
+ */
+
+
+
+//$(document).ready().on('click', '.bname', function (event) {
+$(document).ready(function(){
+    $(".menuTop").children("li").click(function(){
+        /*alert($(this).children("input").serialize());
+        var url='{:U('Admin/Index/menuLeft')}';
+        var menuId=$(this).children("input").html();
+        $.ajax({
+            type:"POST",
+            dataType:"json",
+            url:url,
+            data:menuId,//$(this).children("input").val(),
+            async:false,
+            success:function(data){
+                //alert(data['name']);
+
+            }
+
+        });*/
+        var classN =".menuLeft"+$(this).children("input").val();
+      $(".menu ul").children(classN).show();
+        $(".menu ul").children(classN). children("ul").children("li").show();
+        $(".menu ul").children(classN). children("ul").children("li").children("ul").hide();
+        $(".menu ul").children(classN). siblings("li").hide();
+
+    });
+});
+</script>
+</block>
+
+

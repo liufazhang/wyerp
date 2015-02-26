@@ -1,0 +1,111 @@
+  
+ 
+
+
+ <!-- <form class="menuEdit" action='{:U('Admin/Menu/menuAdd')}' method="post" >  -->
+ <form class="menuEdit"  >
+<table class="table table-bordered table-hover m10">
+    <tr>
+        <td width="10%" class="tableleft">{:L('menuID')}</td>
+        <td>
+           <div class="menuSelectionDiv">
+				<input class="menuSelectInput" style="BACKGROUND-IMAGE:url(__IMG__/ul_selection.gif);BACKGROUND-REPEAT: no-repeat;
+				background-position-x:right;background-position-y:center;" name="parentMenu"></input>
+				{$menuWithoutLink}
+			</div>
+        </td>
+        <td class = "menuid">
+        	<input class = "menuid"  name="id">
+        	
+        	</input>
+        </td>
+    </tr>
+    <tr>
+        <td class="tableleft">{:L('menuTitle')}</td>
+        <td><input type="text" name="menuTitle"/></td>
+    </tr>
+    <tr>
+        <td class="tableleft">{:L('menuLink')}</td>
+        <td><input type="text" name="menuLink"/></td>
+    </tr>    
+    
+    <tr>
+        <td class="tableleft">{:L('menuSort')}</td>
+        <td><input type="text" name="menuSort"/></td>
+    </tr>
+    <tr>
+        <td class="tableleft">{:L('menuStatus')}</td>
+        <td>
+            <input type="radio" name="menuStatus" value="0" checked/> {:L('menuEnable')}
+            <input type="radio" name="menuStatus" value="1"/> {:L('menuDisable')}
+        </td>
+    </tr>
+    <tr>
+        <td class="tableleft"></td>
+        <td>
+            <button  class="btn btn-primary" id="menuAdd" type="button">{:L('menuAdd')}</button>
+            <button  class="btn btn-primary" id="menuDelete" type="button">{:L('menuDelete')}</button> 
+        </td>
+    </tr>
+</table>
+</form>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$(".menuSelectionDiv").children("ul").hide();
+		$(".menuSelectInput").click(function(){			
+			if($(".menuSelectionDiv").children("ul").is(":hidden")){
+				$(".menuSelectionDiv").children("ul").show();
+			}else {
+				$(".menuSelectionDiv").children("ul").hide();
+			}
+			
+		});
+
+		
+	});
+
+
+	$(document).ready(function(){			 	
+	 	$(".menuSelectionDiv").children("ul").find("a").each(function(){		 	
+			$(this).click(function(){
+				//alert($(this).html());
+				$(".menuSelectInput").val($(this).html());
+				$(".menuid").val($(this).next(".idhide").val());
+				//alert($(this).next(".idhide").val());
+				$(".menuSelectionDiv").children("ul").hide();
+			});								
+			
+		});
+	 	
+	 	
+	});
+	//data: $('.menuEdit').serialize(),
+	//url:"http://localhost/wy_erp/index.php/Admin/Menu/menuAdd.html",
+	$(document).ready(function(){	
+	 	
+		 	var menuAdd_url='{:U('Admin/Menu/menuAdd')}';
+			
+			$("#menuAdd").click(function(){	
+				$.ajax({
+					type:"POST",		
+					dataType:"json",			
+					url:menuAdd_url,
+					data:$('.menuEdit').serialize(),					
+					async:false,					
+					success:function(data, textStatus){						
+						alert(data);						
+					},
+					error:function(XMLHttpRequest, textStatus, errorThrown){
+						alert("Data error: " + textStatus );
+						//alert(XMLHttpRequest.readyState);
+						//alert(XMLHttpRequest.status);
+					}
+				});
+				
+			});									
+	
+	});
+</script>
+
+ 
+

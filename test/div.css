@@ -1,0 +1,45 @@
+.body{
+    margin:0;
+}
+#divmax{
+    margin:0 ;
+    width:auto;
+}
+#divheader{
+    height: 100px;background: #000000;margin-bottom: 0px;
+}
+
+#divcontent{
+    height: 200px;margin-bottom: 0px;
+    background: green;
+    border: 3px solid;
+}
+
+#divleft{
+    float: left;
+    width:15%;
+    height: 200px;
+    background: #cff;
+
+}
+#divright{
+    float: right;
+    width:84.78%;
+    height:200px;
+    background:#269abc;
+    border: 1px solid;
+
+
+}
+#abc{
+    margin-top:5px;
+    margin-left:5px;
+    margin-right:5px;
+    border: 2px solid;
+    background: #ac2925;
+}
+#divfoot{
+    height: 60px;
+    background: yellowgreen;
+}
+
