@@ -13,7 +13,7 @@
 
 	
 }
-.oe_view_title{
+.oe_view_title,.content_top_bar_title{
     background: #eaeaea;
     height: 90px;
 }

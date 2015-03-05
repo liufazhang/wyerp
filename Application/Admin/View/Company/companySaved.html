@@ -110,12 +110,16 @@
                     </tr>
                     </thead>
                     <tbody >
-                    <tr class="bank_count_default" style="display: none">
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                    <tr class="bank_count_default" style="">
                     </tr>
+                    <volist name="bankList" id="vo">
+                            <tr>
+                            <td>  {$vo.count}</td>
+                            <td> {$vo.bank}</td>
+                            <td> {$vo.owner}</td>
+                            </tr>
 
+                    </volist>
                     </tbody>
                 </table>
             </tr>

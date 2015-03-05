@@ -1,0 +1,20 @@
+.oe_view_title,.content_top_bar_title{
+    background: #eaeaea;
+    height: 90px;
+}
+.oeAdd,.dpAdd {
+    float:left;
+    margin-top: 30px;
+}
+.moreOperation{
+    float:right;
+    margin-right: 500px;
+    margin-top: 30px;
+    display: none;
+}
+.oe_title_div,.dp_title_div{
+    display:block;
+}
+.oe_fade , .oeSave,.oe_slash,.dpFade,.dpSave,.dpSlash{
+    display:none;
+}

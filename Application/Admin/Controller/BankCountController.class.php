@@ -15,12 +15,14 @@ class BankCountController extends AdminController{
          * 要判断，如果银行名称在bank数据库中没有，则在bank中添加一个银行
          *
          */
-        $_POST['mtime']=1988;
-        /*foreach($_POST as $v){
-            file_put_contents("d:/WWW/wy_erp/mylog.log","addBankCount true:".$v."\r\n",FILE_APPEND);
-        }*/
+        $_POST['modifyerid']=session('oeId');
+        $_POST['mtime']=date("Y-m-d H:i:s");
+    /*  foreach($_POST as $key=>$v){
+            file_put_contents("d:/WWW/wy_erp/mylog.log","$key :".$v."\r\n",FILE_APPEND);
+        }
+   */
 
-        /*
+
         $com = D("bankcount");
         if($com->create()){
             $result = $com->add();
@@ -34,8 +36,8 @@ class BankCountController extends AdminController{
         }else{
             file_put_contents("d:/mylog.log","addBankCount error:"."\r\n",FILE_APPEND);
         }
-        $rel = $com->field('name,count,bank')->where("id='$insertId'")->select();
+        $rel = $com->field('owner,count,bank')->where("id='$insertId'")->select();
         $this->ajaxReturn($rel,"json");
-        */
+
     }
 }

@@ -5,7 +5,7 @@
                 <tbody>
                 <tr>
                     <td style="width:150px;">公司名称</td>
-                    <td colspan="3"><input class="oe_slogan input_shape" name="name" type="text" value={$data['name']}>
+                    <td colspan="3"><input class="oe_slogan input_shape oe_info_company" name="name" type="text" value={$data['name']}>
                     </td>
 
                 </tr>
@@ -112,29 +112,25 @@
                     </thead>
                  <tbody >
                  <tr class="bank_count_default" style="display: none">
-                     <td>a</td>
-                     <td>b</td>
-                     <td>c</td>
+                     <td></td>
+                     <td></td>
+                     <td></td>
                  </tr>
                  <tr >
                      <td ><a class="oe_bank_p1_add " href="#">添加一个账户</a></td>
                      <td></td>
                      <td></td>
-
                  </tr>
-
+                 <volist name="bankList" id="vo">
+                     <tr>
+                         <td>  {$vo.count}</td>
+                         <td> {$vo.bank}</td>
+                         <td> {$vo.owner}</td>
+                     </tr>
+                 </volist>
                  </tbody>
              </table>
          </tr>
-        <!-- <tr>
-             <td>
-                 <div>
-                     <button type="button" class="btn btn-primary  oe_info_save">保　存</button>
-                     <span> 或</span>
-                     <a>放弃</a>
-                 </div>
-             </td>
-         </tr>-->
          </tbody>
      </table>
     </form>
@@ -172,8 +168,10 @@
                       <th>银行账户所有者</th>
                   </tr>
                   <tr>
+                      <td>公司名称</td>
+                      <td><input class="input_shape bankcount_companyname" name="companyname"></td>
                       <td>所有者姓名</td>
-                      <td><input class="input_shape " name="name"></td>
+                      <td><input class="input_shape " name="owner"></td>
                   </tr>
 
                   <tr>
@@ -186,7 +184,6 @@
                               <input  type="text" class=" input_shape bank_name oe_bank_p2_pop" name="bank">
                               <span class="oe_bank_p2_pop"><i class=" fa fa-caret-down"></i></span>
                               <ul class="ul_dropdown bank_list">
-                                  <!--<li class="oe_bank_p2_create"><i>创建并编辑</i></li>-->
                                   <li class="oe_bank_p2_create"></li>
                               </ul>
                           </div>
@@ -276,17 +273,22 @@
 
     $(".oe_bank_p1_add").click(function(){
         /**/
+        popup();//弹出遮盖层
         var url = '{:U('Admin/Bank/bankList')}';
         $.getJSON(url,function(data){
             $.each(data,function(index,val){
-                //$(".oe_bank_p2_create").before("<li>"+val.name+"<input style='display: none' value="+val.code+ ">"+ "</li>");
-                $(".oe_bank_p2_create").before("<li class='bname'>"+"<a>"+val.name+"</a>" + "<input style='display: none' value="+val.code+ ">"+ "</li>" );
+                alert(val.bankListFlag);
+                if(!val.bankListFlag){
+                     $(".oe_bank_p2_create").before("<li class='bname'>"+"<a>"+val.name+"</a>" +
+                        "<input style='display: none' value="+val.code+ ">"+ "</li>" );
+                }
             });
         });
-        popup();//弹出遮盖层
         var bankWidth = $(".oe_bank_p2").width();
         var bankHeight = $(".oe_bank_p2").height();
         $(".oe_bank_p2").height(bankHeight+100);
+        //alert($(".oe_info_company").val());
+        $(".bankcount_companyname").val($(".oe_info_company").val());
         var sWidth = $(document).width();
         var sHeight = $(document).height();
         var top = sHeight/2 - bankHeight/2;
@@ -322,8 +324,8 @@ $(".oe_bank_p2_save").click(function(event){
             if(data != ""){
                 $(".oe_bank_p2").hide();
                 $.each(data,function(index,val){
-                    $(".bank_count_default").after("<tr><td><a class='oe_bank_p1_list'>"+val.count+"</a></td><td>"+val.name
-                            +"</td><td>"+val.bank+"</td></tr>")
+                    $(".bank_count_default").after("<tr><td><a class='oe_bank_p1_list'>"+val.count+"</a></td><td>"+val.bank
+                            +"</td><td>"+val.owner+"</td></tr>")
                 });
 
             }else{

@@ -1,3 +1,135 @@
-<div>
-组织部门
+<div class="content_top_bar_title">
+    <div class="dp_title_div">
+        <a class="dp_title" href="#">组织部门</a>
+        <span class="dpSlash">/</span>
+        <span class="dpFade">新建</span>
+    </div>
+    <div class="dpAdd">
+        <button type="button" class="btn btn-primary dpCreate">创建</button>
+        <button type="button" class="btn btn-primary btOeEdit">编辑</button>
+    </div>
+    <div class="moreOperation">
+        <div class="btn-group">
+            <button type="button" class="btn btn-default dropdown-toggle"
+                    data-toggle="dropdown">
+                更多 <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a class="dpListDelete">删除</a></li>
+                <li><a href="#">导出</a></li>
+            </ul>
+        </div>
+    </div>
+
 </div>
+<div class="department_list">
+    <table class="table table-condensed">
+        <thead>
+        <tr>
+            <th><input class="moreSelect" type="checkbox"></th>
+            <th>部门名称</th>
+        </tr>
+        </thead>
+        <tobdy >
+            <Volist name="dpList" id="vo">
+                <tr class="dp">
+                    <td><input class="dpList" type="checkbox"><span class="selectId" style="display:none">{$vo.id}</span></td>
+                    <td class="selectOe"><span class="selectName">{$vo.name}</span> <span class="selectId" style="display:none">{$vo.id}</span></td>
+                    <td class="selectOe"><span class="selectName">{$vo.name}</span> <span class="selectId" style="display:none">{$vo.id}</span></td>
+                </tr>
+            </Volist>
+            <tr>
+                <td><input class="moreSelect" type="checkbox"></td>
+                <td>Your department</td>
+            </tr>
+        </tobdy>
+
+    </table>
+
+</div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        var DepartmentCreate= '{:U('Admin/Department/DepartmentCreate')}';
+        $(".dpCreate").click(function(){
+            $(".dpFade").show();
+            $(".dpSlash").show();
+            $(".dpCreate").hide();
+            $(".department_list").load(DepartmentCreate,{"dpState":"create"});//新建，区别编辑
+            $(".moreOperation").hide();
+        });
+
+        $(".selectOe").click(function(){
+            var DepartmentSaved= '{:U('Admin/Department/DepartmentSaved')}';
+            var dpId = $(this).children(".selectId").text() ;
+            //alert($(this).value());
+            var name = $(this).children(".selectName").text();
+            $(".dpFade").text(name);
+            $(".dpFade").show();
+            $(".dpSlash").show();
+            $(".dpCreate").hide();
+            $(".department_list").load(DepartmentSaved,{"dpId":dpId});//进入保存的状态界面
+            $(".moreOperation").hide();
+            $(".btOeEdit").show();
+        });
+        /*
+         点编辑按钮
+         */
+        $(".btOeEdit").click(function(){
+            var DepartmentEdit= '{:U('Admin/Department/DepartmentEdit')}';
+            $(".dpFade").show();
+            $(".dpSlash").show();
+            $(".dpCreate").hide();
+            $(".department_list").load(DepartmentEdit,{"dpState":"edit"});//编辑
+            $(".moreOperation").hide();
+        });
+
+        $(".dp_title").click(function(){
+            var Url= '{:U('Admin/Department/index')}';
+            $(".content").load(Url);
+        });
+        $(".moreSelect,.dpList").click(function(){
+            //alert($("input:checkbox:checked").val());
+
+            if($("input:checkbox:checked").val() =='on'){
+                // alert("checked");
+                $(".moreOperation").show();
+            }else{
+                $(".moreOperation").hide();
+            }
+        });
+
+        /*
+         右侧公司删除功能，遍历选中的公司，删除数据库，并更新界面
+         */
+        $(".dpListDelete").click(function(){
+            var  $url =  "{:U('Admin/Company/companyDelete')}";
+            // alert($(".tobdy").html());
+            var arr =new Array();
+            $(".moreSelect,.dpList").each(function(){
+                if($(this).is(":checked")){
+                    //alert($(this).next().text());
+                    arr.push($(this).next().text());
+                }
+            });
+
+
+            $.ajax({
+                type:"POST",
+                dataType:"json",
+                data:{"data":arr},
+                url:$url,
+                async:false,
+                success:function(data){
+                    if(data>0){
+                        $(".dpList").each(function(){
+                            if($(this).is(":checked")){
+                                $(this).parent().parent().hide();
+                            }
+                        });
+                    }
+                }
+
+            });
+        });
+    });
+</script>

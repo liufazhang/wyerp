@@ -63,8 +63,7 @@ class CompanyController extends AdminController {
 	}
 	
 	public function companyCreate(){
-        $m = new Model();
-       //
+        $m = M('company');
         /*
          * 判断是创建，还是编辑已经存在的公司，分别显示，如果编辑，设置一个session，在companyAdd中判断
          */
@@ -75,11 +74,17 @@ class CompanyController extends AdminController {
              $oeId = session('oeId');
             session("oeAction","oeEdit");
           //  session("oeId",$oeId);
-            $sql = "select * from `wy_erp1.0`.`wy_company` where `wy_company`.`id`=$oeId";
-           $res = $m->query($sql);
+          //  $sql = "select * from `wy_erp1.0`.`wy_company` where `wy_company`.`id`=$oeId";
+            $res = $m->alias('a')->where('a.id='.$oeId)->join('wy_bankcount  ON  wy_bankcount.companyname = a.name')->select();
+          // $res = $m->query($sql);
             $this->assign("data",$res[0]);
-            //$this->assign("oeState","edit");
-            //将表格边框去掉，通过传参数？？？
+            $bankList = array();
+            foreach($res as  $v){
+                $bankList[]=array('owner'=>$v['owner'],'count'=>$v['count'],'bank'=>$v['bank']);
+            }
+
+            $this->assign("data",$res[0]);
+            $this->assign("bankList",$bankList);
            $this->display();
         }
 	}
@@ -98,14 +103,37 @@ class CompanyController extends AdminController {
         $res = $m->query($sql);
         $this->assign("data",$res[0]);
         */
-        $m = M('');
+        $m = M("company");
+      //  $resOe = $m->where('id='.$oeId)->select();
+      //  $m = M("bankcount");
+       // $resCt = $m->where();
+       // $wish = $JOKES->join('user on jokes.uid = user.id')->order('time DESC')->limit($limit)->select();
+        /*
+         * 如果存在多個銀行賬號，則結果包含多條記錄
+         * 從記錄中取出賬戶 count owner bank 三個字段，放入一個賬戶數組
+         * $res為一個二維數組
+         */
+        $res = $m->alias('a')->where('a.id='.$oeId)->join('wy_bankcount  ON  wy_bankcount.companyname = a.name')->select();
+        $bankList = array();
+        foreach($res as  $v){
+            $bankList[]=array('owner'=>$v['owner'],'count'=>$v['count'],'bank'=>$v['bank']);
+        }
+      // dump($m->getLastSql());
+       // dump($bankList);
+       $this->assign("data",$res[0]);
+        $this->assign("bankList",$bankList);
         $this->display();
+
     }
 	
 	public function companyAdd(){
         /*
          * 判断是编辑还是创建，编辑则覆盖原来的数据。
+         *
+         * 银行账户关联：
+         * 根据count取得账户id，更新companyname字段
          */
+        file_put_contents("d:/WWW/wy_erp/mylog.log","companyAdd count:".$_POST['count']."\r\n",FILE_APPEND);
         $action = session('oeAction');
         $oeId = session('oeId');
         $com = M("Company");
@@ -133,9 +161,11 @@ class CompanyController extends AdminController {
                     if( $result = $com->where('id='.$oeId)->save()){
                         $data['oeId']=$oeId;
                     }else{
+                        /*
+                         * 如果数据没有修改，则会进入这里，保存出错，错误代码？？？
+                         */
                         $error = $com->getError();
-                        file_put_contents("d:/WWW/wy_erp/mylog.log","save error oeId:".$com->getLastSql()."\r\n",FILE_APPEND);
-                        $data['oeId'] =-111;
+                        $data['oeId'] =$oeId;
                     }
 
             }

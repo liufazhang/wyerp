@@ -26,21 +26,36 @@ class BankController extends AdminController {
             file_put_contents("d:/mylog.log","error:"."\r\n",FILE_APPEND);
             $data['name'] =" bankCreate insert error";
         }
-        /* if(!$com->create($_POST)){
-             exit($com->getError());
-         }*/
         $data['name'] = $_POST['name'];
         $data['code'] = $_POST['code'];
         $this->ajaxReturn($data,"json");
     }
 
 public function bankList(){
-    $com = D("Bank");
-    $rel = $com->field('code,name')->select();
+    /*
+     * 每一次点击都会从数据库读，为了只读一次，要设置一个Session变量
+     */
+
+    $bankListFlag = session("bankListFlag");
+    file_put_contents("d:/mylog.log","bankListFlag".$bankListFlag."\r\n",FILE_APPEND);
+    if(!$bankListFlag){
+        $bankListFlag = true;
+        session('bankListFlag',$bankListFlag);
+        $com = D("Bank");
+        $rel = $com->field('code,name')->select();
         /*  foreach($rel as $val){
               file_put_contents("d:/mylog.log","code:".$val['code']."::name:".$val['name']."\r\n",FILE_APPEND);
           }*/
-  //  $data['name']="success";
-    $this->ajaxReturn($rel,"json");
+        //  $data['name']="success";
+        $rel['bankListFlag']=false;
+
+        file_put_contents("d:/mylog.log","bankListFlag222222".$rel['bankListFlag']."\r\n",FILE_APPEND);
+         $this->ajaxReturn($rel,"json");
+        }else{
+            $rel['bankListFlag']=true;
+             file_put_contents("d:/mylog.log","bankListFlag33333333332".$rel['bankListFlag']."\r\n",FILE_APPEND);
+             $this->ajaxReturn($rel,"json");
     }
+    }
+
 } 
